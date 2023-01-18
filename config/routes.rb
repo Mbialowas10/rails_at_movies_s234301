@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   #   GET /movies/:index
   #   GET /production_companies
   #   GET clear/production_companies/:id
+
+  resources :movies, only: [:index, :show]
+  resources :production_companies, only: [:index, :show]
 end
