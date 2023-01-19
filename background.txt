@@ -1,0 +1,10 @@
+#routes
+GET /
+GET /movies
+GET /movies/:id
+GET /production_companies
+GET /production_companies/:id
+
+HomeController - index
+MoviesController -  index,show
+ProductionCompaniesController - index, show
