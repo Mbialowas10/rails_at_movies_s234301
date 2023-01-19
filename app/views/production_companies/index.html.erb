@@ -1,2 +1,6 @@
-<h1>ProductionCompanies#index</h1>
-<p>Find me in app/views/production_companies/index.html.erb</p>
+<h1><%= @production_company.name %></h1>
+<p>
+  this production company made <%= @production_company.movies.count %> of the top 100 movies.
+</p>
+
+
