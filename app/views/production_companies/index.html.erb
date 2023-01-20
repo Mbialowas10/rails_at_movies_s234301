@@ -1,6 +1,12 @@
-<h1><%= @production_company.name %></h1>
-<p>
-  this production company made <%= @production_company.movies.count %> of the top 100 movies.
-</p>
+<h1>Production Companies</h1>
+<ol>
+  <% @production_companies.each do |c|%>
+    <li>
+      <%= link_to c.name, c %>
+      <em>(<%= pluralize c.movie_count, "Top Movie" %> )</em>
+    </li>
+  <% end %>
+  <h6 class="title is-6"><%= link_to 'Home', root_path %></h6>
+</ol>
 
 

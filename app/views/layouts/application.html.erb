@@ -19,6 +19,10 @@
       </div>
       <%= yield %>
     </section>
-
+    <% if controller_name == 'home' %>
+      <p>There's no place like home. </p>
+    <% else %>
+      <%= render partial: 'shared/footer' %>
+    <% end %>
   </body>
 </html>
