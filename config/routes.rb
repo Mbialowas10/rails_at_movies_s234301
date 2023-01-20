@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   get 'production_companies/index'
   get 'production_companies/show'
   get 'movies/index'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   #   GET /movies/:index
   #   GET /production_companies
   #   GET clear/production_companies/:id
-
+  root to: "home#index"
   resources :movies, only: [:index, :show]
   resources :production_companies, only: [:index, :show]
 end
