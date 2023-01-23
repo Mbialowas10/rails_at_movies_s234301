@@ -2,3 +2,11 @@
 <p class='mb-5'>
   This production company made <%= @production_company.movies.count %> of the top 100 movies.
 </p>
+
+<ul>
+  <% @production_company.movies.each do |m| %>
+  <li>
+    <%= m.title %>
+  </li>
+  <%end%>
+</ul>
