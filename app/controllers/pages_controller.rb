@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   http_basic_authenticate_with name: 'admin', password: 'secret', except: :show
-  before_action :set_page, only: %i[show edit update destroy]
+  before_action :set_page, only: %i[permalink edit update destroy]
 
   # GET /pages or /pages.json
   def index
@@ -66,6 +66,7 @@ class PagesController < ApplicationController
   def set_page
     # @page = Page.find(params[:id])
     @page = Page.find(permalink: params[:id])
+    # @page = Page.find_by(permalink: params[:permalink])
   end
 
   # Only allow a list of trusted parameters through.
