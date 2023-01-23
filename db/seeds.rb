@@ -1,5 +1,8 @@
 require 'csv'
 
+MovieGenre.delete_all
+Genre.delete_all
+
 Movie.delete_all
 ProductionCompany.delete_all
 Page.delete_all
@@ -22,6 +25,13 @@ movies.each do |m|
       average_vote: m['avg_vote']
     )
     puts "Invalid movie #{m['original_title']}" unless movie&.valid?
+    genres = m['genre'].split(',').map(&:strip)
+
+    genres.each do |name|
+      genre = Genre.find_or_create_by(name:)
+
+      MovieGenre.create(movie: m, genre:)
+    end
   else
     puts "invalid production company #{m['production_company']} for movie #{m['original_title']}."
   end
@@ -33,14 +43,12 @@ Page.create(
   title: 'About the Data',
   content: 'This data powering the website was provided by Kaggle.',
   permalink: 'about'
-
 )
 
 Page.create(
   title: 'Contact Us',
   content: 'If you like this website and would like to learn more, please reach us at obviously@fake.com',
   permalink: 'contact'
-
 )
 puts "Created #{ProductionCompany.count} Production Companies"
 puts "Created #{Movie.count} movies."
