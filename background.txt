@@ -8,3 +8,11 @@ GET /production_companies/:id
 HomeController - index
 MoviesController -  index,show
 ProductionCompaniesController - index, show
+
+
+Many to many relationship type
+
+Genre
+-name
+
+MovieGenre -
