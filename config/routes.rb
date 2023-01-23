@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   #   get 'production_companies/show'
   #   get 'movies/index'
   #   get 'movies/show'
-  resources :movies, only: %i[index show]
+  resources :movies, only: %i[index show] do
+    collection do
+      get 'search' # movies/search/(:format)
+    end
+  end
+
   resources :production_companies, only: %i[index show]
   resources :pages, except: [:show]
   get '/pages/:permalink' => 'pages#permalink', as: 'permalink'
