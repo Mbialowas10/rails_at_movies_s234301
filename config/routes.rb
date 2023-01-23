@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :pages
+  # resources :pages
   get 'home/index'
   get 'production_companies/index'
   get 'production_companies/show'
@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   #   GET /movies/:index
   #   GET /production_companies
   #   GET clear/production_companies/:id
-  root to: "home#index"
-  resources :movies, only: [:index, :show]
-  resources :production_companies, only: [:index, :show]
+  root to: 'home#index'
+  resources :movies, only: %i[index show]
+  resources :production_companies, only: %i[index show]
+
+  resources :pages, except: [:show]
+  get '/pages/:permalink' => 'pages#permalink', as: 'permalink'
 end

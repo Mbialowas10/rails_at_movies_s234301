@@ -8,7 +8,10 @@ class PagesController < ApplicationController
   end
 
   # GET /pages/1 or /pages/1.json
-  def show; end
+  # def show; end
+  def permalink
+    @page = Page.find_by(permalink: params[:permalink])
+  end
 
   # GET /pages/new
   def new
