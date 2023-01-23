@@ -8,7 +8,11 @@ class PagesController < ApplicationController
   end
 
   # GET /pages/1 or /pages/1.json
-  def show; end
+  # def show; end
+
+  def permalink
+    @page = Page.find_by(permalink: params[:permalink])
+  end
 
   # GET /pages/new
   def new
@@ -60,7 +64,8 @@ class PagesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_page
-    @page = Page.find(params[:id])
+    # @page = Page.find(params[:id])
+    @page = Page.find(permalink: params[:id])
   end
 
   # Only allow a list of trusted parameters through.
