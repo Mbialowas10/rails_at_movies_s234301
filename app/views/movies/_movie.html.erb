@@ -9,6 +9,7 @@
 </article>
 
 
+
 <progress class="progress is-info" value="<%= movie.average_vote %>" max=10>
   <%= movie.average_vote%>
 </progress>
@@ -16,6 +17,10 @@
 <p>
  <strong>Rating: </strong>
  <%= movie.description %>
+</p>
+<p>
+  <strong>Genres:</strong>
+  <%= movie.genres.map(&:name).join(",")%>
 </p>
 
 <p>
