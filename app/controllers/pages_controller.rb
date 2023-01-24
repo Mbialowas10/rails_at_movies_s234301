@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   http_basic_authenticate_with name: 'admin', password: 'secret', except: :show
-  before_action :set_page, only: %i[show edit update destroy]
+  before_action :set_page, only: %i[permalink edit update destroy]
 
   # GET /pages or /pages.json
   def index
@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   # GET /pages/1 or /pages/1.json
   # def show; end
   def permalink
-    @page = Page.find_by(permalink: params[:permalink])
+    # @page = Page.find_by(permalink: params[:permalink])
   end
 
   # GET /pages/new
@@ -19,7 +19,9 @@ class PagesController < ApplicationController
   end
 
   # GET /pages/1/edit
-  def edit; end
+  def edit
+    # @page = Page.find_by(permalink: params[:permalink])
+  end
 
   # POST /pages or /pages.json
   def create
@@ -27,7 +29,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to page_url(@page), notice: 'Page was successfully created.' }
+        format.html { redirect_to pages_path, notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -63,7 +65,8 @@ class PagesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_page
-    @page = Page.find(params[:id])
+    # @page = Page.find(params[:id])
+    @page = Page.find_by(permalink: params[:permalink])
   end
 
   # Only allow a list of trusted parameters through.
