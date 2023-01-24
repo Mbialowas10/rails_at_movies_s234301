@@ -21,10 +21,10 @@ Rails.application.routes.draw do
   resources :production_companies, only: %i[index show]
 
   resources :pages, except: %i[show edit update delete]
-  get '/pages/:permalink' => 'pages#permalink', as: 'permalink_page'
-  get '/pages/:permalink/edit' => 'pages#edit', as: 'edit_page'
-  patch '/pages/:permalink' => 'pages#update', as: 'update_page'
-  delete '/pages/:permalink' => 'pages#destroy', as: 'delete_page'
+  get '/pages/:permalink' => 'pages#permalink', as: 'permalink_page'    # show page
+  get '/pages/:permalink/edit' => 'pages#edit', as: 'edit_page'         # load a edit form page
+  patch '/pages/:permalink' => 'pages#update', as: 'update_page'        # update the page
+  delete '/pages/:permalink' => 'pages#destroy', as: 'delete_page'      # delete a page
 
   #   get '/pages/' => 'pages#index', as: 'pages' # display all pages
   #   get '/pages/:permalink' => 'pages#permalink', as: 'permalink_page' # read a page #something wrong here?
