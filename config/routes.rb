@@ -18,13 +18,14 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # resources :movies, only: %i[index show]
   resources :movies
-  resources :production_companies, only: %i[index show]
 
-  resources :pages, except: %i[show edit update delete]
-  get '/pages/:permalink' => 'pages#permalink', as: 'permalink_page'    # show page
-  get '/pages/:permalink/edit' => 'pages#edit', as: 'edit_page'         # load a edit form page
-  patch '/pages/:permalink' => 'pages#update', as: 'update_page'        # update the page
-  delete '/pages/:permalink' => 'pages#destroy', as: 'delete_page'      # delete a page
+  # resources :pages, except: %i[show edit update delete]
+  resources :pages, except: [:show]
+  get '/pages/:permalink' => 'pages#permalink', as: :permalink
+  # get '/pages/:permalink' => 'pages#permalink', as: 'permalink_page'    # show page
+  # get '/pages/:permalink/edit' => 'pages#edit', as: 'edit_page'         # load a edit form page
+  # patch '/pages/:permalink' => 'pages#update', as: 'update_page'        # update the page
+  # delete '/pages/:permalink' => 'pages#destroy', as: 'delete_page'      # delete a page
 
   #   get '/pages/' => 'pages#index', as: 'pages' # display all pages
   #   get '/pages/:permalink' => 'pages#permalink', as: 'permalink_page' # read a page #something wrong here?
@@ -33,4 +34,5 @@ Rails.application.routes.draw do
   #   get '/pages/:permalink/edit' => 'pages#edit', as: 'edit_page' # edit a page
   #   patch '/pages/:permalink' => 'pages#update', as: 'upate_page' # update a page
   #   delete '/pages/:permalink' => 'pages#destroy', as: 'delete_page' # delete a page
+  resources :production_companies, only: %i[index show]
 end
