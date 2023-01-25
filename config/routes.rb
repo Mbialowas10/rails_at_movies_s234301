@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   # resources :movies, only: %i[index show]
   resources :movies
+  ### modified this file January 25 at noon ####
 
   # resources :pages, except: %i[show edit update delete]
   resources :pages, except: [:show]
