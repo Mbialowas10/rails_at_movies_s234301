@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @page %>
+<%= render @page, locals: {page: @page}%>
 
 <div>
   <%= link_to "Edit this page", edit_page_path(@page) %> |
   <%= link_to "Back to pages", pages_path %> |
 
-  <%# link_to 'Delete', @page, method: :delete %>
-  <%# button_to "Destroy this page", pages_path, method: :delete %>
-  <%# button_to "Destroy this page", delete_page_path(@page)%>
+
   <%= link_to 'Delete', delete_page_path(@page), data: {"turbo-method": :delete, turbo_confirm: 'Are you sure?'}  %>
-  <%# button_to 'Delete', delete_page_path(@page), data: {"turbo-method": :delete, turbo_confirm: 'Are you sure?'}%>
+  <% # link_to 'Delete', page_path(@page), method: :delete %>
+
 </div>

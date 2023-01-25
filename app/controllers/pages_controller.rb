@@ -53,8 +53,8 @@ class PagesController < ApplicationController
 
   # DELETE /pages/1 or /pages/1.json
   def destroy
-    @page = Page.find_by(permalink: params[:permalink])
-    console
+    @page = Page.find(params[:id])
+    # console @page
     @page.destroy
 
     respond_to do |format|
